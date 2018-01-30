@@ -1,13 +1,13 @@
 package com.example.jtbakker_subbook;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
@@ -42,18 +42,24 @@ public class SubscriptionAdapter extends BaseAdapter {
     public View getView(int index, View convertView, ViewGroup parent) {
         View rowView = convertView;
         if (rowView == null) {
-            rowView = subInflater.inflate(R.layout.row, null);
+            rowView = subInflater.inflate(R.layout.subscription_row, null);
         }
+        // Get name and set.
         TextView text = (TextView) rowView.findViewById(R.id.subscription_name);
         Subscription subAtIndex = subSource.get(index);
         text.setText(subAtIndex.getName());
+
         // Get cost for subscription, convert to string, and set.
         text = (TextView) rowView.findViewById(R.id.subscription_cost);
-        text.setText(String.format("%.02f", subAtIndex.getCost())); // Two decimal places.
+        String costText = String.format("%.02f", subAtIndex.getCost());
+        String rowCostText = subContext.getResources().getString(R.string.monthly_charge, costText);
+        text.setText(rowCostText);
+
         // Get date for subscription, convert to string, and set.
         text = (TextView) rowView.findViewById(R.id.subscription_date);
-        DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
-        text.setText(df.format(subAtIndex.getDate()));
+        String dateText = new SimpleDateFormat("MM-dd-yyyy").format(subAtIndex.getDate());
+        String rowDateText = subContext.getResources().getString(R.string.date_started, dateText);
+        text.setText(rowDateText);
         return rowView;
     }
 

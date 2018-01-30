@@ -9,10 +9,10 @@ import java.util.Date;
 public class Subscription {
     private String name;
     private Date date;
-    private float cost; // Monthly charge
+    private double cost; // Monthly charge
     private String comment;
 
-    Subscription(String name, Date date, float cost, String comment) {
+    Subscription(String name, Date date, double cost, String comment) {
         this.name = name; // Limited to 20 characters.
         this.date = date; // yyyy-mm-dd
         this.cost = cost; // Monthly non-negative charge in CAD.
@@ -27,7 +27,7 @@ public class Subscription {
     public Date getDate() {
         return date;
     }
-    public float getCost() {
+    public double getCost() {
         return cost;
     }
     public String getComment() {return comment; }
@@ -39,7 +39,7 @@ public class Subscription {
     public void setDate(Date date) {
         this.date = date;
     }
-    public void setCost(float cost) {
+    public void setCost(double cost) {
         this.cost = cost;
     }
     public void setComment(String comment) {this.comment = comment;}
