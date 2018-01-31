@@ -71,7 +71,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline4" />
 
     <TextView
-        android:id="@+id/subscription_entry_title"
+        android:id="@+id/text_name"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginBottom="16dp"
@@ -85,7 +85,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline" />
 
     <TextView
-        android:id="@+id/cost_label"
+        android:id="@+id/text_date"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginBottom="16dp"
@@ -99,7 +99,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline3" />
 
     <TextView
-        android:id="@+id/name_label"
+        android:id="@+id/text_cost"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginBottom="16dp"
@@ -113,7 +113,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline4" />
 
     <TextView
-        android:id="@+id/date_label"
+        android:id="@+id/text_comment"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginBottom="16dp"
@@ -127,7 +127,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline5" />
 
     <TextView
-        android:id="@+id/comment_label"
+        android:id="@+id/text_sub_purpose"
         android:layout_width="0dp"
         android:layout_height="70dp"
         android:layout_marginBottom="8dp"
@@ -183,7 +183,7 @@
         app:layout_constraintGuide_percent="0.3" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/button_done"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
