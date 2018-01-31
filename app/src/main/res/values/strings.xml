@@ -1,6 +1,15 @@
 <resources>
     <string name="app_name">jtbakker-SubBook</string>
-    <string name="monthly_charge"> $%1$s CAD/month</string>
-    <string name="date_started"> Started on %1$s</string>
-    <string name="overall_charge"> Total Monthly Charge: %1$s</string>
+    <string name="monthly_charge">$%1$s CAD/month</string>
+    <string name="date_started">Started on %1$s</string>
+    <string name="overall_charge">Total Monthly Charge: %1$s</string>
+    <string name="subscription_creation_button">Add New</string>
+    <string name="total_subscription_cost">Overall Monthly Charge</string>
+    <string name="subscription_creation_screen">New Subscription</string>
+    <string name="subscription_edit">Edit Subscription</string>
+    <string name="name_label">Name:</string>
+    <string name="cost_label">Monthly Charge:</string>
+    <string name="comment_label">Comment (optional)</string>
+    <string name="date_label">Date:</string>
+    <string name="subscription_entry_done">Done</string>
 </resources>
