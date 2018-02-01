@@ -1,15 +1,27 @@
 <resources>
+    <!-- Essential strings -->
     <string name="app_name">jtbakker-SubBook</string>
-    <string name="monthly_charge">$%1$s CAD/month</string>
+
+    <!-- Strings for subscription list including date started,
+         individual cost, and overall cost of all subscriptions -->
+    <string name="subscription_charge">$%1$s CAD/month</string>
     <string name="date_started">Started on %1$s</string>
-    <string name="overall_charge">Total Monthly Charge: %1$s</string>
-    <string name="subscription_creation_button">Add New</string>
-    <string name="total_subscription_cost">Overall Monthly Charge</string>
-    <string name="subscription_creation_screen">New Subscription</string>
+    <string name="monthly_charge">Total Monthly Charge: %1$s</string>
+
+    <!-- Subscription add/delete/done button text -->
+    <string name="subscription_create_button">Add New</string>
+    <string name="subscription_delete_button">Delete</string>
+    <string name="subscription_entry_done">Done</string>
+
+    <!-- Subscription add/edit/delete messages -->
+    <string name="subscription_create">New Subscription</string>
     <string name="subscription_edit">Edit Subscription</string>
+    <string name="subscription_delete">Delete subscription?</string>
+
+    <!-- Subscription attribute labels for add/edit -->
     <string name="name_label">Name:</string>
     <string name="cost_label">Monthly Charge:</string>
     <string name="comment_label">Comment (optional)</string>
     <string name="date_label">Date:</string>
-    <string name="subscription_entry_done">Done</string>
+
 </resources>

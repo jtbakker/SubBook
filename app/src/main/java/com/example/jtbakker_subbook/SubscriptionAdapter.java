@@ -38,6 +38,7 @@ public class SubscriptionAdapter extends BaseAdapter {
     public long getItemId(int index) {
         return index;
     }
+
     @Override
     public View getView(int index, View convertView, ViewGroup parent) {
         View rowView = convertView;

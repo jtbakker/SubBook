@@ -16,7 +16,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Sub_EntryScreen"></activity>
+        <activity android:name=".SubEntryScreen"></activity>
     </application>
 
 </manifest>
