@@ -11,8 +11,10 @@
 
     <!-- Subscription add/delete/done button text -->
     <string name="subscription_create_button">Add New</string>
-    <string name="subscription_delete_button">Delete</string>
-    <string name="subscription_entry_done">Done</string>
+    <string name="subscription_view_delete">Delete</string>
+    <string name="subscription_view_edit">Edit</string>
+    <string name="subscription_entry_done">Create</string>
+    <string name="subscription_entry_cancel">Cancel</string>
 
     <!-- Subscription add/edit/delete messages -->
     <string name="subscription_create">New Subscription</string>

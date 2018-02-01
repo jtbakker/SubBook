@@ -48,9 +48,18 @@ public class MainActivity extends AppCompatActivity {
         int subIndex = -1;
         intent.putExtra("SCREEN_TITLE", subEntryTitle);
         intent.putExtra("SUBSCRIPTION_INDEX", subIndex);
-        startActivity(intent);
+        startActivityForResult(intent, 1);
     }
 
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK) {
+            Bundle subValues = data.getExtras();
+            String name = subValues.get("NAME");
+
+            Subscription  newSubscription = new Subscription();
+        }
+    }
     // Recalculate total monthly charge and display to screen.
     public void displayTotalCost() {
         TextView view_TotalCost = (TextView) findViewById(R.id.text_total_cost);

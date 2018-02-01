@@ -104,12 +104,20 @@ public class SubEntryScreen extends AppCompatActivity {
             return;
         }
 
-        // If all values are valid, initialize new subscription object.
-        //Subscription newSub;
-        //newSub = new Subscription(string_NameEntry, date_DateEntry, double_CostEntry, string_CommentEntry);
-
+        // If all values are valid, return them to MainActivity.
+        Intent returnIntent = new Intent();
+        returnIntent.putExtra("NAME", string_NameEntry);
+        returnIntent.putExtra("DATE", date_DateEntry);
+        returnIntent.putExtra("COST", double_CostEntry);
+        returnIntent.putExtra("COMMENT", string_CommentEntry);
+        setResult(RESULT_OK, returnIntent);
+        finish();
     }
 
+    public void cancel(View view) {
+        setResult(RESULT_CANCELED);
+        finish();
+    }
     public void showErrorDialog(String errorMessage) {
         this.errorDialog.setMessage(errorMessage);
         this.errorDialog.show();
