@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         sub_ListView = (ListView) findViewById(R.id.list_sub);
+        userSubscriptions = new ArrayList<Subscription>();
         String newName = "TwentyFourHHHHHHHHHH";
         double newCost = 7.99;
         Date newDate = new Date();
@@ -45,6 +46,10 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra("SCREEN_TITLE", subEntryTitle);
         intent.putExtra("SUBSCRIPTION_INDEX", subIndex);
         startActivity(intent);
+    }
+
+    public void subscriptionListClick(View view) {
+        System.out.print("YOU DID THE THING");
     }
 
     public double getTotalCost() {

@@ -27,9 +27,7 @@ public class SubEntryScreen extends AppCompatActivity {
         String string_NameEntry = view_NameEntry.getText().toString();
         if (string_NameEntry.length() > 20) {
             // Error message.
-            return 0;
+            return;
         }
-        EditText view_dateEntry = (
-        )
     }
 }
