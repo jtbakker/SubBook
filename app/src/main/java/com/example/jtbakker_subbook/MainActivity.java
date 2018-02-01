@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.text.DateFormat;
 import java.util.ArrayList;
@@ -32,6 +33,8 @@ public class MainActivity extends AppCompatActivity {
         }
         SubscriptionAdapter subAdapter = new SubscriptionAdapter(this, this.userSubscriptions);
         sub_ListView.setAdapter(subAdapter);
+
+        this.displayTotalCost();
     }
 
     // The method "addNewSub" starts the SubEntryScreen activity in the "create" mode,
@@ -48,16 +51,16 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void subscriptionListClick(View view) {
-        System.out.print("YOU DID THE THING");
-    }
-
-    public double getTotalCost() {
-        double total = 0;
+    // Recalculate total monthly charge and display to screen.
+    public void displayTotalCost() {
+        TextView view_TotalCost = (TextView) findViewById(R.id.text_total_cost);
+        double double_TotalCost = 0;
         int size = this.userSubscriptions.size();
         for (int i = 0; i < size; i = i + 1) {
-            total += this.userSubscriptions.get(i).getCost();
+            double_TotalCost += this.userSubscriptions.get(i).getCost();
         }
-        return total;
+        String string_TotalCost = String.format("%,.2f", double_TotalCost);
+        string_TotalCost = getString(R.string.total_cost, string_TotalCost);
+        view_TotalCost.setText(string_TotalCost);
     }
 }

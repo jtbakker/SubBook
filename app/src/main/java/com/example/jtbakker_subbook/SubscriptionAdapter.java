@@ -2,6 +2,7 @@ package com.example.jtbakker_subbook;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -53,7 +54,7 @@ public class SubscriptionAdapter extends BaseAdapter {
         // Get cost for subscription, convert to string, and set.
         text = (TextView) rowView.findViewById(R.id.subscription_cost);
         String costText = String.format("%.02f", subAtIndex.getCost());
-        String rowCostText = subContext.getResources().getString(R.string.monthly_charge, costText);
+        String rowCostText = subContext.getResources().getString(R.string.individual_cost, costText);
         text.setText(rowCostText);
 
         // Get date for subscription, convert to string, and set.
@@ -61,6 +62,13 @@ public class SubscriptionAdapter extends BaseAdapter {
         String dateText = new SimpleDateFormat("MM-dd-yyyy").format(subAtIndex.getDate());
         String rowDateText = subContext.getResources().getString(R.string.date_started, dateText);
         text.setText(rowDateText);
+
+        if (index % 2 == 0) {
+            rowView.setBackgroundColor(Color.LTGRAY);
+        } else {
+            rowView.setBackgroundColor(Color.WHITE);
+        }
+
         return rowView;
     }
 

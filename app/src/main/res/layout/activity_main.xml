@@ -17,7 +17,7 @@
         android:layout_marginTop="8dp"
         android:autoSizeTextType="uniform"
         android:gravity="center"
-        android:text="@string/monthly_charge"
+        android:text="@string/total_cost"
         app:layout_constraintBottom_toTopOf="@+id/guideline_total_cost"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
