@@ -16,11 +16,11 @@
         android:layout_marginTop="8dp"
         android:ems="10"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/guideline3"
+        app:layout_constraintBottom_toTopOf="@+id/H_name_label"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.225"
-        app:layout_constraintStart_toStartOf="@+id/guideline7"
-        app:layout_constraintTop_toTopOf="@+id/guideline" />
+        app:layout_constraintStart_toStartOf="@+id/V_all_labels"
+        app:layout_constraintTop_toTopOf="@+id/H_screen_title" />
 
     <EditText
         android:id="@+id/user_entry_date"
@@ -32,11 +32,11 @@
         android:layout_marginTop="8dp"
         android:ems="10"
         android:inputType="date"
-        app:layout_constraintBottom_toTopOf="@+id/guideline4"
+        app:layout_constraintBottom_toTopOf="@+id/H_date_label"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.775"
-        app:layout_constraintStart_toStartOf="@+id/guideline7"
-        app:layout_constraintTop_toTopOf="@+id/guideline3" />
+        app:layout_constraintStart_toStartOf="@+id/V_all_labels"
+        app:layout_constraintTop_toTopOf="@+id/H_name_label" />
 
     <EditText
         android:id="@+id/user_entry_comment"
@@ -47,12 +47,12 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:ems="10"
-        android:inputType="textImeMultiLine"
-        app:layout_constraintBottom_toTopOf="@+id/guideline6"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/H_comment_label"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.575"
-        app:layout_constraintStart_toStartOf="@+id/guideline7"
-        app:layout_constraintTop_toTopOf="@+id/guideline5" />
+        app:layout_constraintStart_toStartOf="@+id/V_all_labels"
+        app:layout_constraintTop_toTopOf="@+id/H_cost_label" />
 
     <EditText
         android:id="@+id/user_entry_cost"
@@ -64,11 +64,11 @@
         android:layout_marginTop="8dp"
         android:ems="10"
         android:inputType="numberDecimal"
-        app:layout_constraintBottom_toTopOf="@+id/guideline5"
+        app:layout_constraintBottom_toTopOf="@+id/H_cost_label"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.775"
-        app:layout_constraintStart_toStartOf="@+id/guideline7"
-        app:layout_constraintTop_toTopOf="@+id/guideline4" />
+        app:layout_constraintStart_toStartOf="@+id/V_all_labels"
+        app:layout_constraintTop_toTopOf="@+id/H_date_label" />
 
     <TextView
         android:id="@+id/text_name"
@@ -78,12 +78,12 @@
         android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:text="@string/name_label"
         android:gravity="center"
-        app:layout_constraintBottom_toTopOf="@+id/guideline3"
-        app:layout_constraintEnd_toStartOf="@+id/guideline7"
+        android:text="@string/subscription_name_label"
+        app:layout_constraintBottom_toTopOf="@+id/H_name_label"
+        app:layout_constraintEnd_toStartOf="@+id/V_all_labels"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline" />
+        app:layout_constraintTop_toTopOf="@+id/H_screen_title" />
 
     <TextView
         android:id="@+id/text_date"
@@ -93,12 +93,12 @@
         android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:text="@string/date_label"
         android:gravity="center"
-        app:layout_constraintBottom_toTopOf="@+id/guideline4"
-        app:layout_constraintEnd_toStartOf="@+id/guideline7"
+        android:text="@string/subscription_date_label"
+        app:layout_constraintBottom_toTopOf="@+id/H_date_label"
+        app:layout_constraintEnd_toStartOf="@+id/V_all_labels"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline3" />
+        app:layout_constraintTop_toTopOf="@+id/H_name_label" />
 
     <TextView
         android:id="@+id/text_cost"
@@ -108,12 +108,12 @@
         android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:text="@string/cost_label"
         android:gravity="center"
-        app:layout_constraintBottom_toTopOf="@+id/guideline5"
-        app:layout_constraintEnd_toStartOf="@+id/guideline7"
+        android:text="@string/subscription_cost_label"
+        app:layout_constraintBottom_toTopOf="@+id/H_cost_label"
+        app:layout_constraintEnd_toStartOf="@+id/V_all_labels"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline4" />
+        app:layout_constraintTop_toTopOf="@+id/H_date_label" />
 
     <TextView
         android:id="@+id/text_comment"
@@ -123,12 +123,12 @@
         android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:text="@string/comment_label"
         android:gravity="center"
-        app:layout_constraintBottom_toTopOf="@+id/guideline6"
-        app:layout_constraintEnd_toStartOf="@+id/guideline7"
+        android:text="@string/subscription_comment_entry_label"
+        app:layout_constraintBottom_toTopOf="@+id/H_comment_label"
+        app:layout_constraintEnd_toStartOf="@+id/V_all_labels"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline5" />
+        app:layout_constraintTop_toTopOf="@+id/H_cost_label" />
 
     <TextView
         android:id="@+id/text_sub_purpose"
@@ -141,52 +141,60 @@
         android:gravity="center"
         android:text="@string/generic_textview"
         android:textSize="@dimen/text_margin"
-        app:layout_constraintBottom_toTopOf="@+id/guideline"
+        app:layout_constraintBottom_toTopOf="@+id/H_screen_title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <android.support.constraint.Guideline
-        android:id="@+id/guideline"
+        android:id="@+id/H_screen_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:autoSizeTextType="uniform"
         app:layout_constraintGuide_percent="0.15738499" />
 
     <android.support.constraint.Guideline
-        android:id="@+id/guideline3"
+        android:id="@+id/H_name_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.3" />
 
     <android.support.constraint.Guideline
-        android:id="@+id/guideline4"
+        android:id="@+id/H_date_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.45009786" />
 
     <android.support.constraint.Guideline
-        android:id="@+id/guideline5"
+        android:id="@+id/H_cost_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.60078275" />
 
     <android.support.constraint.Guideline
-        android:id="@+id/guideline6"
+        android:id="@+id/H_comment_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.75" />
 
     <android.support.constraint.Guideline
-        android:id="@+id/guideline7"
+        android:id="@+id/V_all_labels"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.3" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/V_mid_screen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
 
     <Button
         android:id="@+id/button_done"
@@ -199,16 +207,9 @@
         android:onClick="done"
         android:text="@string/subscription_entry_done"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/guideline8"
+        app:layout_constraintEnd_toStartOf="@+id/V_mid_screen"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline6" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/guideline8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.5" />
+        app:layout_constraintTop_toTopOf="@+id/H_comment_label" />
 
     <Button
         android:id="@+id/button"
@@ -222,6 +223,6 @@
         android:text="@string/subscription_entry_cancel"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guideline8"
-        app:layout_constraintTop_toTopOf="@+id/guideline6" />
+        app:layout_constraintStart_toStartOf="@+id/V_mid_screen"
+        app:layout_constraintTop_toTopOf="@+id/H_comment_label" />
 </android.support.constraint.ConstraintLayout>

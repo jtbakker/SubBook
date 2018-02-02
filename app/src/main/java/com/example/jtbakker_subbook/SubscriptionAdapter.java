@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Locale;
 
 /**
  * Created by Jacob Bakker on 1/29/2018.
@@ -53,14 +54,14 @@ public class SubscriptionAdapter extends BaseAdapter {
 
         // Get cost for subscription, convert to string, and set.
         text = (TextView) rowView.findViewById(R.id.subscription_cost);
-        String costText = String.format("%.02f", subAtIndex.getCost());
-        String rowCostText = subContext.getResources().getString(R.string.individual_cost, costText);
+        String costText = String.format(Locale.CANADA, "%.02f", subAtIndex.getCost());
+        String rowCostText = subContext.getResources().getString(R.string.main_individual_cost, costText);
         text.setText(rowCostText);
 
         // Get date for subscription, convert to string, and set.
         text = (TextView) rowView.findViewById(R.id.subscription_date);
-        String dateText = new SimpleDateFormat("MM-dd-yyyy").format(subAtIndex.getDate());
-        String rowDateText = subContext.getResources().getString(R.string.date_started, dateText);
+        String dateText = new SimpleDateFormat("MM-dd-yyyy", Locale.CANADA).format(subAtIndex.getDate());
+        String rowDateText = subContext.getResources().getString(R.string.main_date_started, dateText);
         text.setText(rowDateText);
 
         if (index % 2 == 0) {

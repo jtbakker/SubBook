@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/SubBook.iml" filepath="$PROJECT_DIR$/SubBook.iml" />
+      <module fileurl="file://D:\Documents\University\Winter 2018\CMPUT 301\jtbakkerSubBook\SubBook.iml" filepath="D:\Documents\University\Winter 2018\CMPUT 301\jtbakkerSubBook\SubBook.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jtbakkerSubBook.iml" filepath="$PROJECT_DIR$/jtbakkerSubBook.iml" />
       <module fileurl="file://C:\Users\mushm\Documents\University\Winter 2018\CMPUT301\SubBook\jtbakkerSubBook.iml" filepath="C:\Users\mushm\Documents\University\Winter 2018\CMPUT301\SubBook\jtbakkerSubBook.iml" />
     </modules>
   </component>

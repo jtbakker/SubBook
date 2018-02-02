@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -11,10 +12,12 @@ import android.widget.TextView;
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
     private ListView sub_ListView;
     private ArrayList<Subscription> userSubscriptions;
+    private SubscriptionAdapter subAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,17 +26,21 @@ public class MainActivity extends AppCompatActivity {
 
         sub_ListView = (ListView) findViewById(R.id.list_sub);
         userSubscriptions = new ArrayList<Subscription>();
-        String newName = "TwentyFourHHHHHHHHHH";
-        double newCost = 7.99;
-        Date newDate = new Date();
-        String comment = "Double King";
-        Subscription testSub = new Subscription(newName, newDate, newCost, comment);
-        for (int i = 0; i < 20; i = i + 1) {
-            userSubscriptions.add(testSub);
-        }
-        SubscriptionAdapter subAdapter = new SubscriptionAdapter(this, this.userSubscriptions);
+        this.subAdapter = new SubscriptionAdapter(this, this.userSubscriptions);
         sub_ListView.setAdapter(subAdapter);
+        sub_ListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(parent.getContext(), SubViewScreen.class);
+                Bundle clickedSubBundle = new Bundle();
 
+                Subscription clickedSub = userSubscriptions.get(position);
+                clickedSubBundle.putSerializable("VIEW", clickedSub);
+                intent.putExtras(clickedSubBundle);
+                intent.putExtra("INDEX", position);
+                startActivityForResult(intent, 1);
+            }
+        });
         this.displayTotalCost();
     }
 
@@ -54,10 +61,11 @@ public class MainActivity extends AppCompatActivity {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK) {
-            Bundle subValues = data.getExtras();
-            String name = subValues.get("NAME");
-
-            Subscription  newSubscription = new Subscription();
+            Bundle subBundle = data.getExtras();
+            Subscription newSub = (Subscription) subBundle.getSerializable("NEW");
+            this.userSubscriptions.add(newSub);
+            this.subAdapter.notifyDataSetChanged();
+            this.displayTotalCost();
         }
     }
     // Recalculate total monthly charge and display to screen.
@@ -68,8 +76,8 @@ public class MainActivity extends AppCompatActivity {
         for (int i = 0; i < size; i = i + 1) {
             double_TotalCost += this.userSubscriptions.get(i).getCost();
         }
-        String string_TotalCost = String.format("%,.2f", double_TotalCost);
-        string_TotalCost = getString(R.string.total_cost, string_TotalCost);
+        String string_TotalCost = String.format(Locale.CANADA, "%,.2f", double_TotalCost);
+        string_TotalCost = getString(R.string.main_total_cost, string_TotalCost);
         view_TotalCost.setText(string_TotalCost);
     }
 }

@@ -1,16 +1,17 @@
 package com.example.jtbakker_subbook;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * Created by Jacob Bakker on 1/21/2018.
  */
 
-public class Subscription {
-    private String name;
+public class Subscription implements Serializable{
+    private String name = "";
     private Date date;
     private double cost; // Monthly charge
-    private String comment;
+    private String comment = "";
 
     Subscription(String name, Date date, double cost, String comment) {
         this.name = name; // Limited to 20 characters.

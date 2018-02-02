@@ -1,13 +1,13 @@
 <resources>
     <!-- Essential strings -->
     <string name="app_name">jtbakker-SubBook</string>
-    <string name="generic_textview">Oops</string>
+    <string name="generic_textview">.</string>
 
     <!-- Strings for subscription list including date started,
          individual cost, and overall cost of all subscriptions -->
-    <string name="individual_cost">$%1$s CAD/month</string>
-    <string name="date_started">Started on %1$s</string>
-    <string name="total_cost">Total Charge: $%1$s/month</string>
+    <string name="main_individual_cost">$%1$s CAD/month</string>
+    <string name="main_date_started">Started on %1$s</string>
+    <string name="main_total_cost">Total Charge: $%1$s/month</string>
 
     <!-- Subscription add/delete/done button text -->
     <string name="subscription_create_button">Add New</string>
@@ -18,14 +18,16 @@
 
     <!-- Subscription add/edit/delete messages -->
     <string name="subscription_create">New Subscription</string>
+    <string name="subscription_view">View Subscription</string>
     <string name="subscription_edit">Edit Subscription</string>
     <string name="subscription_delete">Delete subscription?</string>
 
-    <!-- Subscription attribute labels for add/edit -->
-    <string name="name_label">Name:</string>
-    <string name="cost_label">Monthly Charge:</string>
-    <string name="comment_label">Comment (optional)</string>
-    <string name="date_label">Date:</string>
+    <!-- Subscription attribute labels for add/edit/view -->
+    <string name="subscription_name_label">Name:</string>
+    <string name="subscription_cost_label">Monthly Charge:</string>
+    <string name="subscription_comment_entry_label">Comment (optional):</string>
+    <string name="subscription_comment_view_label">Comment:</string>
+    <string name="subscription_date_label">Date:</string>
 
     <!-- Strings for error message dialogs -->
     <string name="error_dialog_title">Error</string>

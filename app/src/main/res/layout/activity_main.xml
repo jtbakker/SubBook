@@ -17,8 +17,8 @@
         android:layout_marginTop="8dp"
         android:autoSizeTextType="uniform"
         android:gravity="center"
-        android:text="@string/total_cost"
-        app:layout_constraintBottom_toTopOf="@+id/guideline_total_cost"
+        android:text="@string/main_total_cost"
+        app:layout_constraintBottom_toTopOf="@+id/H_total_cost"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -35,17 +35,17 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline_sub_list" />
+        app:layout_constraintTop_toTopOf="@+id/H_add_new" />
 
     <android.support.constraint.Guideline
-        android:id="@+id/guideline_total_cost"
+        android:id="@+id/H_total_cost"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="63dp" />
 
     <android.support.constraint.Guideline
-        android:id="@+id/guideline_sub_list"
+        android:id="@+id/H_add_new"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -57,10 +57,10 @@
         android:layout_height="0dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline_sub_list"
+        app:layout_constraintBottom_toTopOf="@+id/H_add_new"
         app:layout_constraintDimensionRatio="h,1:1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline_total_cost" />
+        app:layout_constraintTop_toTopOf="@+id/H_total_cost" />
 
 </android.support.constraint.ConstraintLayout>

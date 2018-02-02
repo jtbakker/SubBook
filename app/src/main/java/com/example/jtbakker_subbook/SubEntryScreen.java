@@ -106,10 +106,10 @@ public class SubEntryScreen extends AppCompatActivity {
 
         // If all values are valid, return them to MainActivity.
         Intent returnIntent = new Intent();
-        returnIntent.putExtra("NAME", string_NameEntry);
-        returnIntent.putExtra("DATE", date_DateEntry);
-        returnIntent.putExtra("COST", double_CostEntry);
-        returnIntent.putExtra("COMMENT", string_CommentEntry);
+        Subscription newSub = new Subscription(string_NameEntry, date_DateEntry, double_CostEntry, string_CommentEntry);
+        Bundle subBundle = new Bundle();
+        subBundle.putSerializable("NEW", newSub);
+        returnIntent.putExtras(subBundle);
         setResult(RESULT_OK, returnIntent);
         finish();
     }
