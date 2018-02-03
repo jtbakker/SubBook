@@ -54,13 +54,13 @@ public class SubscriptionAdapter extends BaseAdapter {
 
         // Get cost for subscription, convert to string, and set.
         text = (TextView) rowView.findViewById(R.id.subscription_cost);
-        String costText = String.format(Locale.CANADA, "%.02f", subAtIndex.getCost());
+        String costText = subAtIndex.costToString();
         String rowCostText = subContext.getResources().getString(R.string.main_individual_cost, costText);
         text.setText(rowCostText);
 
         // Get date for subscription, convert to string, and set.
         text = (TextView) rowView.findViewById(R.id.subscription_date);
-        String dateText = new SimpleDateFormat("MM-dd-yyyy", Locale.CANADA).format(subAtIndex.getDate());
+        String dateText = subAtIndex.dateToString();
         String rowDateText = subContext.getResources().getString(R.string.main_date_started, dateText);
         text.setText(rowDateText);
 

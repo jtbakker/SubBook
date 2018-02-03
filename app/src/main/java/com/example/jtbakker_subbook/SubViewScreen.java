@@ -9,7 +9,8 @@ import android.widget.TextView;
 import java.util.Locale;
 
 public class SubViewScreen extends AppCompatActivity {
-
+    private Subscription displayedSub;
+    private int subIndex;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -17,21 +18,60 @@ public class SubViewScreen extends AppCompatActivity {
 
         Intent intent = getIntent();
         Bundle subBundle = intent.getExtras();
-        Subscription viewSub = (Subscription) subBundle.getSerializable("VIEW");
+        this.displayedSub = (Subscription) subBundle.getSerializable("VIEW");
+        this.subIndex = subBundle.getInt("INDEX");
 
-        TextView textView = (TextView) findViewById(R.id.text_display_name);
-        textView.setText(viewSub.getName());
-        textView = (TextView) findViewById(R.id.text_display_date);
-        textView.setText(viewSub.getDate().toString());
-        textView = (TextView) findViewById(R.id.text_display_cost);
-        textView.setText(String.format(Locale.CANADA, "%,.2f", viewSub.getCost()));
-        textView = (TextView) findViewById(R.id.text_display_comment);
-        textView.setText(viewSub.getComment());
+        this.displaySubAttributes();
     }
 
+    public void displaySubAttributes() {
+        if (displayedSub != null) {
+            TextView textView = (TextView) findViewById(R.id.text_display_name);
+            textView.setText(displayedSub.getName());
+            textView = (TextView) findViewById(R.id.text_display_date);
+            textView.setText(displayedSub.dateToString());
+            textView = (TextView) findViewById(R.id.text_display_cost);
+            textView.setText(displayedSub.costToString());
+            textView = (TextView) findViewById(R.id.text_display_comment);
+            textView.setText(displayedSub.getComment());
+        }
+    }
     public void cancel(View view) {
         Intent intent = new Intent();
-        setResult(RESULT_CANCELED, intent);
+        Bundle subBundle = new Bundle();
+        subBundle.putSerializable("RESULT_SUB", this.displayedSub);
+        intent.putExtras(subBundle);
+        intent.putExtra("INDEX", this.subIndex);
+        setResult(RESULT_OK, intent);
         finish();
     }
+
+    public void editButton (View view) {
+        Intent intent = new Intent(this, SubEntryScreen.class);
+        Bundle subBundle = new Bundle();
+        subBundle.putSerializable("EDIT", this.displayedSub);
+        intent.putExtras(subBundle);
+        intent.putExtra("SCREEN_TITLE", "Edit Subscription");
+        intent.putExtra("DONE_BUTTON", "Save");
+        startActivityForResult(intent, 1);
+    }
+
+    public void deleteButton (View view) {
+        Intent intent = new Intent();
+        intent.putExtra("INDEX", subIndex);
+        intent.putExtra("DELETE", true);
+        setResult(RESULT_OK, intent);
+        finish();
+    }
+
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK) {
+            Bundle subBundle = data.getExtras();
+            displayedSub = (Subscription) subBundle.getSerializable("RESULT_SUB");
+            this.displaySubAttributes();
+        }
+    }
+
+
 }

@@ -13,7 +13,11 @@
     <string name="subscription_create_button">Add New</string>
     <string name="subscription_view_delete">Delete</string>
     <string name="subscription_view_edit">Edit</string>
-    <string name="subscription_entry_done">Create</string>
+    <string name="subscription_view_back">Done</string>
+    <string name="subscription_entry_title_new">New Subscription</string>
+    <string name="subscription_entry_title_edit">Edit Subscription</string>
+    <string name="subscription_entry_create">Create</string>
+    <string name="subscription_entry_save">Save</string>
     <string name="subscription_entry_cancel">Cancel</string>
 
     <!-- Subscription add/edit/delete messages -->
