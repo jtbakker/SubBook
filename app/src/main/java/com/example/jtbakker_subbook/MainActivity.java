@@ -3,7 +3,7 @@
  *
  * Date Created: January 29, 2018
  *
- * [INSERT COPYRIGHT NOTICE]
+ * Copyright (c) 2018 - CMPUT 301 All Rights Reserved
  */
 
 package com.example.jtbakker_subbook;
@@ -67,6 +67,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         sub_ListView = (ListView) findViewById(R.id.list_sub);
+        /**
+         * This method for responding to row clicks was adapted from the "Android ListView Tutorial"
+         * by Odie Edo-Osagie created on May 4, 2016.
+         * Link at Link at "https://www.raywenderlich.com/124438/android-listview-tutorial"
+         */
         sub_ListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -80,7 +85,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivityForResult(intent, 1);
             }
         });
-        this.displayTotalCost();
     }
 
     /**
@@ -183,7 +187,8 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Initializes both the Subscription dataset using loadFromFile() and the adapter for
-     * the Subscription list.
+     * the Subscription list. Once the dataset is initialized, update the displayed total
+     * cost of all subscriptions.
      *
      * Taken from lonelyTwitter project at https://github.com/vingk/lonelyTwitter/tree/w18wlab3
      * See "lonelyTwitter" activity for method of same name.
@@ -193,6 +198,7 @@ public class MainActivity extends AppCompatActivity {
         loadFromFile();
         subAdapter = new SubscriptionAdapter(this, userSubscriptions);
         sub_ListView.setAdapter(subAdapter);
+        displayTotalCost();
     }
 
     /**

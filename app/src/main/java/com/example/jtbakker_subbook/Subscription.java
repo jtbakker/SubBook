@@ -3,7 +3,7 @@
  *
  * Date: February 4, 2018
  *
- * [INSERT COPYRIGHT]
+ * Copyright (c) 2018 - CMPUT 301 All Rights Reserved
  */
 
 package com.example.jtbakker_subbook;
@@ -152,8 +152,8 @@ public class Subscription implements Serializable {
      * new Subscription values.
      * Legal attribute values are defined as follows:
      *      - Names cannot be empty or longer than 20 characters.
-     *      - Dates must be in the YYYY-MM-DD format.
-     *      - Cost must be a non-negative decimal value.
+     *      - Dates cannot be empty and must be in the YYYY-MM-DD format.
+     *      - Cost cannot be empty and must be a non-negative decimal value.
      *      - Comments cannot be longer than 30 characters.
      */
     private String validateName(String name) throws SubFieldException {

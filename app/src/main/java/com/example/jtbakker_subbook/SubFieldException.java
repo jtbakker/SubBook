@@ -3,7 +3,7 @@
  *
  * Date: February 4, 2018
  *
- * [COPY]
+ * Copyright (c) 2018 - CMPUT 301 All Rights Reserved
  */
 
 package com.example.jtbakker_subbook;

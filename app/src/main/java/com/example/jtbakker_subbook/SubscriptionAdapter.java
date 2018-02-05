@@ -3,7 +3,7 @@
  *
  * Date: February 4, 2018
  *
- * [COPYRIGHT]
+ * Copyright (c) 2018 - CMPUT 301 All Rights Reserved
  */
 
 package com.example.jtbakker_subbook;
@@ -22,10 +22,6 @@ import java.util.ArrayList;
 import java.util.Locale;
 
 /**
- * Created by Jacob Bakker on 1/29/2018.
- */
-
-/**
  * This adapter formats each Subscription object for display in MainActivity
  * list's rows.
  */
@@ -34,6 +30,13 @@ public class SubscriptionAdapter extends BaseAdapter {
     private LayoutInflater subInflater;
     private ArrayList<Subscription> subSource;
 
+    /**
+     * This constructor was adapted from the "Android ListView Tutorial" by Odie Edo-Osagie
+     * created on May 4, 2016.
+     * Link at "https://www.raywenderlich.com/124438/android-listview-tutorial"
+     * @param context
+     * @param subs
+     */
     public SubscriptionAdapter(Context context, ArrayList<Subscription> subs) {
         subContext = context;
         subSource = subs;
@@ -41,6 +44,10 @@ public class SubscriptionAdapter extends BaseAdapter {
     }
 
     /**
+     * This method was adapted from the "Android ListView Tutorial" by Odie Edo-Osagie created
+     * on May 4, 2016.
+     * Link at "https://www.raywenderlich.com/124438/android-listview-tutorial"
+     *
      * Returns the View object for the Subscription at an index. Each attribute aside from
      * the comment is paired with a string denoting the attribute name followed by the
      * attribute itself (e.g. "Date created" is paired with "2017-01-01").
@@ -74,13 +81,18 @@ public class SubscriptionAdapter extends BaseAdapter {
         String rowDateText = subContext.getResources().getString(R.string.main_date_started, dateText);
         text.setText(rowDateText);
 
-        // Row colors alternate from light gray to white based on index.
+        /**
+         * This code for alternating row colors was taken from an answer by Suraj Buraj on
+         * Oct. 28, 2012 to a StackOverflow post.
+         * Link at "https://stackoverflow.com/a/13109854"
+         *
+         * Row colors alternate from light gray to white based on index
+         */
         if (index % 2 == 0) {
             rowView.setBackgroundColor(Color.LTGRAY);
         } else {
             rowView.setBackgroundColor(Color.WHITE);
         }
-
         return rowView;
     }
 
