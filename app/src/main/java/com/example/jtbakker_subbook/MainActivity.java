@@ -168,7 +168,7 @@ public class MainActivity extends AppCompatActivity {
      * This method recalculates the total cost of all Subscriptions created so far and updates
      * the screen with the new value.
      */
-    public void displayTotalCost() {
+    private void displayTotalCost() {
         TextView view_TotalCost = (TextView) findViewById(R.id.text_total_cost);
         double double_TotalCost = 0;
         if (userSubscriptions != null) {

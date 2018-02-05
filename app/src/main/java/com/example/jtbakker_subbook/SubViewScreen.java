@@ -51,7 +51,7 @@ public class SubViewScreen extends AppCompatActivity {
         displaySubAttributes();
     }
 
-    public void displaySubAttributes() {
+    private void displaySubAttributes() {
         if (displayedSub != null) {
             TextView textView = (TextView) findViewById(R.id.text_display_name);
             textView.setText(displayedSub.getName());
@@ -71,7 +71,7 @@ public class SubViewScreen extends AppCompatActivity {
      *
      * @param view
      */
-    public void done(View view) {
+    public void doneButton(View view) {
         Intent intent = new Intent();
         Bundle subBundle = new Bundle();
         subBundle.putSerializable("RESULT_SUB", this.displayedSub);

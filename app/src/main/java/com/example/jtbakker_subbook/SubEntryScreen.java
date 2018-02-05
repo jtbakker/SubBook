@@ -111,7 +111,7 @@ public class SubEntryScreen extends AppCompatActivity {
      * @param view
      * @see Subscription
      */
-    public void done(View view) {
+    public void doneButton(View view) {
         // Get all user-inputted Subscription attributes.
         EditText entryView = (EditText) findViewById(R.id.user_entry_name);
         String nameEntry = entryView.getText().toString();
@@ -145,7 +145,7 @@ public class SubEntryScreen extends AppCompatActivity {
      * A return code reflecting the fact that no Subscriptions were created or changed is returned.
      * @param view
      */
-    public void cancel(View view) {
+    public void cancelButton(View view) {
         setResult(RESULT_CANCELED);
         finish();
     }
@@ -154,7 +154,7 @@ public class SubEntryScreen extends AppCompatActivity {
      * This method creates a pop-up displaying the provided errorMessage.
      * @param errorMessage
      */
-    public void showErrorDialog(String errorMessage) {
+    private void showErrorDialog(String errorMessage) {
         errorDialog.setMessage(errorMessage);
         errorDialog.show();
     }
