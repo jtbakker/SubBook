@@ -1,3 +1,11 @@
+/**
+ * Classname: SubscriptionAdapter
+ *
+ * Date: February 4, 2018
+ *
+ * [COPYRIGHT]
+ */
+
 package com.example.jtbakker_subbook;
 
 import android.content.Context;
@@ -17,6 +25,10 @@ import java.util.Locale;
  * Created by Jacob Bakker on 1/29/2018.
  */
 
+/**
+ * This adapter formats each Subscription object for display in MainActivity
+ * list's rows.
+ */
 public class SubscriptionAdapter extends BaseAdapter {
     private Context subContext;
     private LayoutInflater subInflater;
@@ -28,19 +40,17 @@ public class SubscriptionAdapter extends BaseAdapter {
         subInflater = (LayoutInflater) subContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
-    @Override
-    public int getCount() {
-        return subSource.size();
-    }
-    @Override
-    public Object getItem(int index) {
-        return subSource.get(index);
-    }
-    @Override
-    public long getItemId(int index) {
-        return index;
-    }
-
+    /**
+     * Returns the View object for the Subscription at an index. Each attribute aside from
+     * the comment is paired with a string denoting the attribute name followed by the
+     * attribute itself (e.g. "Date created" is paired with "2017-01-01").
+     *
+     * @param index Index of the Subscription in both the ListView and the ArrayList in
+     *              the MainActivity class.
+     * @param convertView
+     * @param parent
+     * @return
+     */
     @Override
     public View getView(int index, View convertView, ViewGroup parent) {
         View rowView = convertView;
@@ -64,6 +74,7 @@ public class SubscriptionAdapter extends BaseAdapter {
         String rowDateText = subContext.getResources().getString(R.string.main_date_started, dateText);
         text.setText(rowDateText);
 
+        // Row colors alternate from light gray to white based on index.
         if (index % 2 == 0) {
             rowView.setBackgroundColor(Color.LTGRAY);
         } else {
@@ -73,4 +84,17 @@ public class SubscriptionAdapter extends BaseAdapter {
         return rowView;
     }
 
+    // Implement methods defined in abstract class BaseAdapter.
+    @Override
+    public int getCount() {
+        return subSource.size();
+    }
+    @Override
+    public Object getItem(int index) {
+        return subSource.get(index);
+    }
+    @Override
+    public long getItemId(int index) {
+        return index;
+    }
 }

@@ -1,3 +1,11 @@
+/**
+ * ClassName: MainActivity
+ *
+ * Date Created: January 29, 2018
+ *
+ * [INSERT COPYRIGHT NOTICE]
+ */
+
 package com.example.jtbakker_subbook;
 
 import android.content.Context;
@@ -27,13 +35,32 @@ import java.util.Locale;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-
+/**
+ *  Created by Jacob Bakker
+ *
+ *  This class implements the functionality for the user Subscription container and the main
+ *  screen for the app.
+ */
 public class MainActivity extends AppCompatActivity {
     private ListView sub_ListView;
     private ArrayList<Subscription> userSubscriptions;
     private SubscriptionAdapter subAdapter;
     private static final String FILENAME = "subscriptionList.sav";
 
+
+    /**
+     * This method initializes the ListView for userSubscriptions and a the method for handling
+     * row selection.
+     * <p>
+     *     If a row is tapped, the SubEntryScreen activity is started and is passed both the
+     *     Subscription object and index for the selected row. The Subscription is required for both
+     *     display and editing purposes while the index is intended to be passed back by
+     *     SubViewScreen on completion, allowing the tapped Subscription to either be updated or
+     *     deleted based on the activity result.
+     * </p>
+     * <param> savedInstanceState
+     * <see> SubViewScreen
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,20 +83,58 @@ public class MainActivity extends AppCompatActivity {
         this.displayTotalCost();
     }
 
-    // The method "addNewSub" starts the SubEntryScreen activity in the "create" mode,
-    // allowing the user to initialize and add a new subscription to their list.
-    // The intent requires the title for the screen and an index for the subscription in
-    // the arraylist to be modified. Since a new subscription is being created, -1 will be
-    // supplied in indicate that a new subscription is being created.
+    /**
+     * This method starts the SubEntryScreen so that user can create a new Subscription.
+     * <p>
+     *     SubEntryScreen displays a screen title denoting the purpose of the entry i.e. whether
+     *     the user is editing or creating a Subscription. This title must be supplied as a
+     *     key-value pair where key="SCREEN TITLE" in the intent.
+     * </p>
+     *
+     * @param view
+     * @see SubEntryScreen
+     */
     public void addNewSub(View view) {
         Intent intent = new Intent(this, SubEntryScreen.class);
         String subEntryTitle = getString(R.string.subscription_create);
-        int subIndex = -1;
-        intent.putExtra("SCREEN_TITLE", "New Subscription");
-        intent.putExtra("SUBSCRIPTION_INDEX", subIndex);
+        intent.putExtra("SCREEN_TITLE", subEntryTitle);
         startActivityForResult(intent, 1);
     }
 
+    /**
+     * This method updates the list of user Subscriptions both on screen and on file according
+     * to the results of either the SubEntryScreen or the SubViewScreen.
+     * <p>
+     *     If the user did not cancel out of either screen (i.e. resultCode=RESULT_OK), then the
+     *     intent is checked for a Subscription object and an index value. There are 3 cases to
+     *     for these values:
+     * </p><p>
+     *     Case 1: A Subscription object is found and the index is >=0. These return values are the
+     *     result of the user editing a Subscription object at the given index value, so update
+     *     the userSubscriptions list with this modified Subscription.
+     * </p><p>
+     *     Case 2: A Subscription object is found and the index is -1. The -1 is intended to denote
+     *     a new Subscription object, so insert the new Subscription at the end of the list.
+     * </p><p>
+     *     Case 3: No Subscription object is found and the index is >=0. This is intended to mean that
+     *     the user selected "DELETE" for the Subscription at the index while on the SubViewScreen since doing
+     *     so returns only the index. However, in the event that an error occured in SubViewScreen
+     *     caused no Subscription to be given in data, a third key-value pair in data is checked before
+     *     deleting the Subscription. If the value for key="DELETE" is 'false' then the Subscription
+     *     at that index is deleted. This means that the delete operation must be explicitly
+     *     requested in order to avoid accidental deletions due to errors.
+     * </p><p>
+     *     The userSubscriptions list is modified in any case, so the method updates the listView
+     *     by notifying subAdapter of changes, recalculates the total cost by calling displayTotalCost,
+     *     and saves the changed list to a file.
+     * </p>
+     * @param requestCode
+     * @param resultCode
+     * @param data Subscription objects created either in SubViewScreen or SubEntryScreen are passed
+     *             back to MainActivity via this Intent object.
+     * @see SubEntryScreen
+     * @see SubViewScreen
+     */
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK) {
@@ -78,22 +143,27 @@ public class MainActivity extends AppCompatActivity {
             if (newSub != null) {
                 int subIndex = data.getIntExtra("INDEX", -1);
                 if (subIndex != -1) {
-                    userSubscriptions.set(subIndex, newSub);
+                    userSubscriptions.set(subIndex, newSub); // Case 1.
                 } else {
-                    userSubscriptions.add(newSub);
+                    userSubscriptions.add(newSub); // Case 2.
                 }
+            // Case 3. Check if delete operation was requested.
             } else if (subBundle.getBoolean("DELETE", false)) {
                 int deleteIndex = subBundle.getInt("INDEX", -1);
                 if (deleteIndex >= 0) {
                     userSubscriptions.remove(deleteIndex);
                 }
             }
-            subAdapter.notifyDataSetChanged();
-            displayTotalCost();
-            saveInFile();
+            subAdapter.notifyDataSetChanged(); // Update the ListView for mySubscriptions
+            displayTotalCost(); // Update the total cost TextView.
+            saveInFile(); // Save changes to file.
         }
     }
-    // Recalculate total monthly charge and display to screen.
+
+    /**
+     * This method recalculates the total cost of all Subscriptions created so far and updates
+     * the screen with the new value.
+     */
     public void displayTotalCost() {
         TextView view_TotalCost = (TextView) findViewById(R.id.text_total_cost);
         double double_TotalCost = 0;
@@ -103,11 +173,21 @@ public class MainActivity extends AppCompatActivity {
                 double_TotalCost += userSubscriptions.get(i).getCost();
             }
         }
+        // Format total cost to 2 decimal places.
         String string_TotalCost = String.format(Locale.CANADA, "%,.2f", double_TotalCost);
+        // Insert total cost into display string.
         string_TotalCost = getString(R.string.main_total_cost, string_TotalCost);
+        // Update screen with modified total cost string.
         view_TotalCost.setText(string_TotalCost);
     }
 
+    /**
+     * Initializes both the Subscription dataset using loadFromFile() and the adapter for
+     * the Subscription list.
+     *
+     * Taken from lonelyTwitter project at https://github.com/vingk/lonelyTwitter/tree/w18wlab3
+     * See "lonelyTwitter" activity for method of same name.
+     */
     protected void onStart() {
         super.onStart();
         loadFromFile();
@@ -115,15 +195,21 @@ public class MainActivity extends AppCompatActivity {
         sub_ListView.setAdapter(subAdapter);
     }
 
+    /**
+     * Loads userSubscription arraylist from memory. If none exists, initialize userSubscriptions
+     * to empty arrayList.
+     *
+     * Taken from lonelyTwitter project at https://github.com/vingk/lonelyTwitter/tree/w18wlab3
+     * See "lonelyTwitter" activity for method of same name.
+     */
     private void loadFromFile() {
         try {
             FileInputStream fis = openFileInput(FILENAME);
             BufferedReader in = new BufferedReader(new InputStreamReader(fis));
-
             Gson gson = new Gson();
-
+            //Taken https://stackoverflow.com/questions/12384064/gson-convert-from-json-to-a-typed-arraylistt
+            // 2018-01-24
             Type listType = new TypeToken<ArrayList<Subscription>>(){}.getType();
-
             userSubscriptions = gson.fromJson(in, listType);
         } catch (FileNotFoundException e) {
             userSubscriptions = new ArrayList<Subscription>();
@@ -132,15 +218,18 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Saves the userSubscriptions list to file.
+     *
+     * Taken from lonelyTwitter project at https://github.com/vingk/lonelyTwitter/tree/w18wlab3
+     * See "lonelyTwitter" activity for method of same name.
+     */
     private void saveInFile() {
         try {
             FileOutputStream fos = openFileOutput(FILENAME, Context.MODE_PRIVATE);
             BufferedWriter out = new BufferedWriter(new OutputStreamWriter(fos));
-
             Gson gson  = new Gson();
-
             gson.toJson(userSubscriptions, out);
-
             out.flush();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -149,8 +238,12 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Taken from lonelyTwitter project at https://github.com/vingk/lonelyTwitter/tree/w18wlab3
+     * See "lonelyTwitter" activity for method of same name.
+     */
     protected void onDestroy() {
         super.onDestroy();
-        Log.i("In destrog method", "The app is closing");
+        Log.i("In destroy method", "The app is closing");
     }
 }

@@ -7,7 +7,7 @@
          individual cost, and overall cost of all subscriptions -->
     <string name="main_individual_cost">$%1$s CAD/month</string>
     <string name="main_date_started">Started on %1$s</string>
-    <string name="main_total_cost">Total Charge: $%1$s/month</string>
+    <string name="main_total_cost">Total Charge: $%1$s CAD/month</string>
 
     <!-- Subscription add/delete/done button text -->
     <string name="subscription_create_button">Add New</string>
@@ -33,15 +33,7 @@
     <string name="subscription_comment_view_label">Comment:</string>
     <string name="subscription_date_label">Date:</string>
 
-    <!-- Strings for error message dialogs -->
+    <!-- Strings for error message title and button -->
     <string name="error_dialog_title">Error</string>
     <string name="error_dialog_button">OK</string>
-    <string name="error_message_name_long">Maximum length of names is 20 characters.</string>
-    <string name="error_message_name_empty">Name cannot be empty.</string>
-    <string name="error_message_date_invalid">Date must be in YYYY-MM-DD format.</string>
-    <string name="error_message_date_empty">Date cannot be empty.</string>
-    <string name="error_message_cost_invalid">Cost must be a decimal value.</string>
-    <string name="error_message_cost_negative">Monthly charge cannot be negative.</string>
-    <string name="error_message_cost_empty">Monthly charge cannot be empty.</string>
-    <string name="error_message_comment_long">Maximum length of comments is 30 characters.</string>
 </resources>
